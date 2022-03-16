@@ -1,7 +1,7 @@
 import express from "express";
 import * as path from "path";
-import { MoviesApi } from "./moviesApi.js";
-import { MongoClient } from "mongodb";
+import {MongoClient} from "mongodb"
+import {MoviesApi} from "./moviesApi.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -23,6 +23,7 @@ app.use((req, res, next) => {
         next();
     }
 });
+
 
 const server = app.listen(process.env.PORT || 3000, () => {
     console.log(`Started on http://localhost:${server.address().port}`);
