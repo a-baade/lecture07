@@ -1,7 +1,7 @@
 import express from "express";
 import * as path from "path";
-import {MongoClient} from "mongodb"
-import {MoviesApi} from "./moviesApi.js";
+import { MoviesApi } from "./moviesApi.js";
+import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -17,9 +17,9 @@ mongoClient.connect().then(async () => {
 app.use(express.static("../client/dist/"));
 
 app.use((req, res, next) => {
-    if(req.method === "GET" && !req.path.startsWith("/api")) {
-        return res.sendFile(path.resolve("../client/dist/index.html"));
-    }else {
+    if (req.method === "GET" && !req.path.startsWith("/api")) {
+        res.sendFile(path.resolve("../client/dist/index.html"));
+    } else {
         next();
     }
 });
